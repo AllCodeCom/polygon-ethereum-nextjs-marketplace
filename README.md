@@ -106,4 +106,8 @@ module.exports = {
 };
 ```
 
-If using Infura, update __.infuraid__ with your [Infura](https://infura.io/) project ID.
+If using Infura, update __.infuraid__ with your [Infura](https://infura.io/) project ID
+
+Mumbai Testnet Contracts
+nftMarket deployed to: 0x6256012AA28C4A2fe9c5d8f472d8714629402E6F
+nft deployed to: 0xD6892f098306d5a3fEe30eba55547dEDf6f54D7e.
