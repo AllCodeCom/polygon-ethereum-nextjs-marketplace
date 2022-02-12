@@ -32,7 +32,7 @@ export default function CreateItem() {
       setFileUrl(url)
     } catch (error) {
       console.log('Error uploading file: ', error)
-    }  
+    }
   }
   async function createMarket() {
     const { name, description, price } = formInput
@@ -48,15 +48,15 @@ export default function CreateItem() {
       createSale(url)
     } catch (error) {
       console.log('Error uploading file: ', error)
-    }  
+    }
   }
 
   async function createSale(url) {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)    
+    const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
-    
+
     /* next, create the item */
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer)
     let transaction = await contract.createToken(url)
@@ -66,7 +66,7 @@ export default function CreateItem() {
     let tokenId = value.toNumber()
 
     const price = ethers.utils.parseUnits(formInput.price, 'ether')
-  
+
     /* then list the item for sale on the marketplace */
     contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
     let listingPrice = await contract.getListingPrice()
@@ -80,7 +80,7 @@ export default function CreateItem() {
   return (
     <div className="flex justify-center">
       <div className="w-1/2 flex flex-col pb-12">
-        <input 
+        <input
           placeholder="Asset Name"
           className="mt-8 border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
@@ -91,7 +91,7 @@ export default function CreateItem() {
           onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
         />
         <input
-          placeholder="Asset Price in Eth"
+          placeholder="Asset Price in MATIC"
           className="mt-2 border rounded p-4"
           onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
         />
