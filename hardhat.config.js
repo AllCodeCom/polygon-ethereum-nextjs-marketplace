@@ -4,10 +4,7 @@ const fs = require('fs');
 require('dotenv').config();
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
-const INFURA_ID = process.env.INFURA_ID;
-
-// const privateKey = fs.readFileSync(".secret").toString().trim() || "01234567890123456789";
-// const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
+const infuraId = process.env.INFURA_ID;
 
 module.exports = {
   defaultNetwork: "hardhat",
@@ -16,7 +13,7 @@ module.exports = {
       chainId: 1337
     },
     mumbai: {
-      url: "https://polygon-mumbai.infura.io/v3/${INFURA_ID}",
+      url: `https://polygon-mumbai.infura.io/v3/${infuraId}`,
       accounts: [PRIVATE_KEY]
     }
   },
